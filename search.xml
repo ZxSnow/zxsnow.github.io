@@ -26,13 +26,13 @@
     <title>垃圾收集策略</title>
     <url>/2021/09/26/%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AD%96%E7%95%A5/</url>
     <content><![CDATA[<h3 id="一、垃圾收集策略"><a class="header-anchor" href="#一、垃圾收集策略">¶</a>一、垃圾收集策略</h3>
+<span id="more"></span>
 <p>主要问题：</p>
 <ul>
 <li>收什么？</li>
 <li>什么时候收？</li>
 <li>怎么收？</li>
 </ul>
-<span id="more"></span>
 <h4 id="1-哪些内存需要回收？"><a class="header-anchor" href="#1-哪些内存需要回收？">¶</a>1. 哪些内存需要回收？</h4>
 <p>​	其中程序计数器、 虚拟机栈、 本地方法栈3个区域随线程而生， 随线程而灭， 栈中的栈帧随着方法的进入和退出而有条不紊地执行着出栈和入栈操作。 每一个栈帧中分配多少内存基本上是在类结构确定下来时就已知的（尽管在运行期会由即时编译器进行一些优化， 但在基于概念模型的讨论里， 大体上可以认为是编译期可知的） ， 因此这几个区域的内存分配和回收都具备确定性，在这几个区域内就不需要过多考虑如何回收的问题， 当方法结束或者线程结束时， 内存自然就跟随着回收了。</p>
 <p>​	而<strong>Java堆</strong>和<strong>方法区</strong>这两个区域则有着很显著的不确定性： 一个接口的多个实现类需要的内存可能会不一样， 一个方法所执行的不同条件分支所需要的内存也可能不一样， 只有处于运行期间， 我们才能知道程序究竟会创建哪些对象， 创建多少个对象， 这部分内存的分配和回收是动态的。 垃圾收集器所关注的正是这部分内存该如何管理。</p>
@@ -307,6 +307,10 @@ Counting GC） 和“追踪式垃圾收集”（Tracing GC） 两大类， 这�
 <p><img src="https://i.loli.net/2021/06/23/EvAdKMYzPSxTrVs.png" alt="image-20210623105353785"></p>
 <h5 id="3-1-Serial收集器"><a class="header-anchor" href="#3-1-Serial收集器">¶</a>3.1 Serial收集器</h5>
 ]]></content>
+      <categories>
+        <category>Java</category>
+        <category>JVM</category>
+      </categories>
       <tags>
         <tag>JVM</tag>
       </tags>
